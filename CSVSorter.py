@@ -139,7 +139,10 @@ def main():
         "num_desc": "num_desc"
     }
     
-    output_filename = f"{base_name}_sorted_{column_to_sort}_{sort_desc[sort_type]}.csv"
+    # Clean column name for filename (remove/replace invalid characters)
+    clean_column_name = column_to_sort.replace("/", "_").replace("\\", "_").replace(":", "_").replace("*", "_").replace("?", "_").replace("\"", "_").replace("<", "_").replace(">", "_").replace("|", "_").strip()
+    
+    output_filename = f"{base_name}_sorted_{clean_column_name}_{sort_desc[sort_type]}.csv"
     output_path = Path("output") / output_filename
     
     # Save sorted data
