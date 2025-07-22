@@ -27,7 +27,7 @@ A powerful and user-friendly Python application for sorting CSV files with multi
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/csv-sorter.git
+   git clone https://github.com/OsandaLakshitha/CSV-Sorter-using-Python.git
    cd csv-sorter
    ```
 
@@ -43,15 +43,15 @@ A powerful and user-friendly Python application for sorting CSV files with multi
 
 3. **Run the application:**
    ```bash
-   python csv_sorter.py
+   python CSVSorter.py
    ```
 
 ## 📁 Project Structure
 
 ```
-csv-sorter/
+CSV-Sorter-using-Python/
 │
-├── csv_sorter.py          # Main application
+├── CSVSorter.py          # Main application
 ├── requirements.txt       # Python dependencies
 ├── README.md             # Project documentation
 ├── LICENSE               # MIT License
@@ -69,7 +69,7 @@ csv-sorter/
 1. **Place your CSV files** in the `source/` directory
 2. **Run the program:**
    ```bash
-   python csv_sorter.py
+   python CSVSorter.py
    ```
 3. **Follow the interactive prompts:**
    - Select your CSV file
@@ -125,11 +125,11 @@ Create a standalone executable that doesn't require Python installation:
 
 2. **Create executable:**
    ```bash
-   pyinstaller --onefile --console --name "CSV_Sorter" csv_sorter.py
+   pyinstaller --onefile --console --name "CSVSorter" CSVSorter.py
    ```
 
 3. **Find your executable:**
-   - Located in `dist/CSV_Sorter.exe` (Windows)
+   - Located in `dist/CSVSorter.exe` (Windows)
    - Ready for distribution!
 
 ### Alternative: Using auto-py-to-exe (GUI)
@@ -227,8 +227,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Documentation**: Check this README and inline code comments
-- **Issues**: [GitHub Issues](https://github.com/yourusername/csv-sorter/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/csv-sorter/discussions)
+- **Issues**: [GitHub Issues](https://github.com/OsandaLakshitha/CSV-Sorter-using-Python/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Osandalakshitha/CSV-Sorter-Using-Python/discussions)
 
 ## 🗺️ Roadmap
 
