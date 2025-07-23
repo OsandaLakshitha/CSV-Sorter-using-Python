@@ -14,6 +14,20 @@ def get_csv_files():
     csv_files = list(source_dir.glob("*.csv"))
     return csv_files
 
+def clean_whitespace(df):
+    """Clean leading/trailing whitespace from all string columns"""
+    print("Cleaning whitespace from text fields...")
+    
+    for column in df.columns:
+        # Check if column contains string data
+        if df[column].dtype == 'object':
+            # Strip whitespace from string columns, handling NaN values
+            df[column] = df[column].astype(str).str.strip()
+            # Convert 'nan' strings back to actual NaN values
+            df[column] = df[column].replace('nan', pd.NA)
+    
+    return df
+
 def display_columns(df):
     """Display available columns with their index numbers"""
     print("\nAvailable columns:")
@@ -58,16 +72,16 @@ def sort_dataframe(df, column, sort_type):
     """Sort dataframe based on specified column and sort type"""
     try:
         if sort_type == "alpha_asc":
-            return df.sort_values(by=column, ascending=True, key=lambda x: x.astype(str).str.lower())
+            return df.sort_values(by=column, ascending=True, key=lambda x: x.astype(str).str.lower(), na_position='last')
         elif sort_type == "alpha_desc":
-            return df.sort_values(by=column, ascending=False, key=lambda x: x.astype(str).str.lower())
+            return df.sort_values(by=column, ascending=False, key=lambda x: x.astype(str).str.lower(), na_position='last')
         elif sort_type == "num_asc":
             # Convert to numeric, errors='coerce' will turn non-numeric values to NaN
             df[column] = pd.to_numeric(df[column], errors='coerce')
-            return df.sort_values(by=column, ascending=True)
+            return df.sort_values(by=column, ascending=True, na_position='last')
         elif sort_type == "num_desc":
             df[column] = pd.to_numeric(df[column], errors='coerce')
-            return df.sort_values(by=column, ascending=False)
+            return df.sort_values(by=column, ascending=False, na_position='last')
     except Exception as e:
         print(f"Error sorting data: {e}")
         return None
@@ -112,6 +126,9 @@ def main():
     except Exception as e:
         print(f"Error reading CSV file: {e}")
         return
+    
+    # Clean whitespace from all text fields
+    df = clean_whitespace(df)
     
     # Display columns
     display_columns(df)
